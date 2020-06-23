@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 fileToRead = process.argv.slice(2);
-//Ends up being an array, would require typecast to string, better to select the array element directly if input is one string
+//Ends up being an array, would require typecast to string, better to select the array element directly if input neede is only one string
 
 let contents = fs.readFileSync(process.argv[2], 'utf8');
 //Add 'utf8' as the second argument to fs to avoid having to use .toString()
