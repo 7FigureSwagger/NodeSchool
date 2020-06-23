@@ -1,10 +1,11 @@
 const fs = require('fs');
 
 fileToRead = process.argv.slice(2);
-console.log(fileToRead);
 
-const contents = fs.readFileSync(fileToRead.toString());
+let contents = fs.readFileSync(fileToRead, 'utf8');
 
-console.log('contents', contents.toString());
+const temp = contents.toString().split('\n');
 
-contents
+console.log(temp.length - 1);
+//The .length property will have one more element than the actual number of '\n' newlines.
+//counting the elements AFTER the .split() function is called
