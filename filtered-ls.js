@@ -8,9 +8,9 @@ fs.readdir(directoryInput, (err, list) => {
 	if (err) {
 		console.log("error", err);
 	} else {
-		list.forEach((i) => {
-			if (path.extname(i) === "." + fileExtension) {
-				console.log(i);
+		list.forEach((file) => {
+			if (path.extname(file) === "." + fileExtension) {
+				console.log(file);
 			}
 		});
 	}
