@@ -1,26 +1,26 @@
 const fs = require("fs");
 const path = require("path");
 
-const directoryInput = process.argv[2];
-const fileType = process.argv[3];
 
+module.exports = function readFile(dir, ext, callback){
 
-
-function readFile(dir, ext, callback){
-  let filteredList = [];
-  (dir, ext) => {
-    fs.readdir(dir, (err, data) => {
-      if(err){return callback(err)};
+  function searchStrict(loc, type){
+    let filteredList = [];
+  
+    fs.readdir(loc, (err, data) => {
+      if(err){return callback(err, data)};
+    
       data.forEach((file) => {
-        // if(path.extname(file))
-        filteredList.push(file);
+        if(path.extname(file) === type){
+          filteredList.push(file);
+        }
       });
     });
+  
+    callback(null, filteredList);
   }; 
 
-  callback(null, filteredList);
 }
-
 
 
 // function readData(directory, extension, (e) => {console.log(e)}) {
