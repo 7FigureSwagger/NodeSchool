@@ -1,24 +1,22 @@
 const fs = require("fs");
 const path = require("path");
 
-module.exports = function readFile(dir, ext, callback) {
-	function searchStrict(loc, type) {
-		let filteredList = [];
+export function fileRead(dir, ext, callback) {
+	let filteredList = [];
 
-		fs.readdir(loc, (err, data) => {
-			if (err) {
-				return callback(err, data);
+	fs.readdir(dir, (err, data) => {
+		if (err) {
+			return callback(err, data);
+		}
+
+		data.forEach((file) => {
+			if (path.extname(file) === ext) {
+				filteredList.push(file);
 			}
-
-			data.forEach((file) => {
-				if (path.extname(file) === type) {
-					filteredList.push(file);
-				}
-			});
-			callback(null, filteredList);
 		});
-	}
-};
+		callback(null, filteredList);
+	});
+}
 
 
 // function readData(directory, extension, (e) => {console.log(e)}) {
