@@ -1,7 +1,9 @@
 const fs = require("fs");
 const path = require("path");
 
-export function fileRead(dir, ext, callback) {
+//Must pass as an unnamed function, otherwise name it then pass it to the exports object
+//IE. module.exports = function fR(dir, ext, callback)........
+function fileReader(dir, ext, callback) {
 	let filteredList = [];
 
 	fs.readdir(dir, (err, data) => {
@@ -18,7 +20,7 @@ export function fileRead(dir, ext, callback) {
 	});
 }
 
-
+module.exports = { fileReader };
 // function readData(directory, extension, (e) => {console.log(e)}) {
 //   let filteredList = [];
 
