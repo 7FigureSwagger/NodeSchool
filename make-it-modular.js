@@ -1,6 +1,13 @@
-const mymodule = require("./mymodule");
-const { fileReader } = mymodule;
+const fileReader = require("./mymodule");
 const directoryInput = process.argv[2];
 const fileType = process.argv[3];
 
-console.log(fileReader);
+fileReader(directoryInput, fileType, (err, data) => {
+  if(err){
+    console.log("An error reading the files has occurred", err);
+  };
+
+  data.forEach((file) => {
+    console.log(file);
+  })
+})
