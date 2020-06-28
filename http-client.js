@@ -9,9 +9,9 @@ http.get(urlSearch, (res) => {
 
   //Catch data as its passed in the response
   res.on('data', (chunk) => {
-    recievedData += chunk;
     console.log(chunk);
   })
+  res.on('error', console.error)
   // res.on('end', () => {
     // console.log(recievedData);
     //Only need to do the following if response is not JSON
