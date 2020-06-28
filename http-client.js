@@ -9,7 +9,7 @@ http.get(urlSearch, (res) => {
   let recievedData = '';
 
   res.on('data', (chunk) => {
-    rawData += chunk;
+    recievedData += chunk;
     console.log(chunk);
   })
   res.on('end', () => {
