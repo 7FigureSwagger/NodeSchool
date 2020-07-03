@@ -3,13 +3,12 @@ const port = process.argv[2];
 
 
 function zeroFill (i) {
-    //Checks if month or date is less than 10 and adds a 0 to it
+    //Checks if month or date is less than 10 and adds a 0 to it 
     return (i < 10 ? '0' : '') + i
 }
 
 const server = net.createServer(function(socket){
-
-  let data = '';
+let data = '';
   let date = new Date();
   data += date.getFullYear() + '-';
   data += zeroFill(date.getMonth() + 1) + '-';
