@@ -1,7 +1,6 @@
 const http = require("http");
 
 const search = process.argv.slice(2);
-console.log(search);
 
 function handleDataCall(url) {
 	let dataRecieved = "";
@@ -26,12 +25,22 @@ function handleDataCall(url) {
 	});
 }
 
+Promise.all([
+	handleDataCall(search[0]),
+	handleDataCall(search[1]),
+	handleDataCall(search[2]),
+]).then((data) => {
+	data.forEach((block) => {
+    console.log(block + '\n');
+  })
+});
+
 // for(let i = 0; i < search.length; i++) {
 //   const promise = handleDataCall(search[i]).then(() => {
 //     console.log('done');
 //   })
 // }
 
-handleDataCall(search[0]).then((res) => {
-	console.log(res);
-});
+// handleDataCall(search[0]).then((res) => {
+// 	console.log(res);
+// });
