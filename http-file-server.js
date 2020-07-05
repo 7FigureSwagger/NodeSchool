@@ -4,8 +4,10 @@ const fs = require('fs');
 const input = process.argv.slice(2);
 
 const server = http.createServer((req, res) => {
-  console.log('server opened');
-  const stream = fs.createReadStream(input[1])
+// Sends response header including status code
+  res.writeHead(200, { 'content-type': 'text/plain' }) 
+  
+  const stream = fs.createReadStream(input[1]);
 
   setTimeout(() => {
     stream.pipe(res);
